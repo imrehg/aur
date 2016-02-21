@@ -1,0 +1,3 @@
+[submodule "resin-cli"]
+	path = resin-cli
+	url = ssh://aur@aur.archlinux.org/resin-cli.git
