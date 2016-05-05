@@ -7,3 +7,6 @@
 [submodule "particle-cli"]
 	path = particle-cli
 	url = ssh://aur@aur.archlinux.org/particle-cli.git
+[submodule "vectr"]
+	path = vectr
+	url = git+ssh://aur@aur.archlinux.org/vectr.git
