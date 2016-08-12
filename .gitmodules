@@ -10,3 +10,6 @@
 [submodule "vectr"]
 	path = vectr
 	url = git+ssh://aur@aur.archlinux.org/vectr.git
+[submodule "bluemix-cli"]
+	path = bluemix-cli
+	url = ssh+git://aur@aur.archlinux.org/bluemix-cli.git
