@@ -1,15 +1,15 @@
 [submodule "resin-cli"]
 	path = resin-cli
-	url = ssh://aur@aur.archlinux.org/resin-cli.git
+	url = git+ssh://aur@aur.archlinux.org/resin-cli.git
 [submodule "resin-cli-git"]
 	path = resin-cli-git
-	url = ssh://aur@aur.archlinux.org/resin-cli-git.git
+	url = git+ssh://aur@aur.archlinux.org/resin-cli-git.git
 [submodule "particle-cli"]
 	path = particle-cli
-	url = ssh://aur@aur.archlinux.org/particle-cli.git
+	url = git+ssh://aur@aur.archlinux.org/particle-cli.git
 [submodule "vectr"]
 	path = vectr
 	url = git+ssh://aur@aur.archlinux.org/vectr.git
 [submodule "bluemix-cli"]
 	path = bluemix-cli
-	url = ssh+git://aur@aur.archlinux.org/bluemix-cli.git
+	url = git+ssh://aur@aur.archlinux.org/bluemix-cli.git

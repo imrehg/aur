@@ -3,7 +3,7 @@ rvm: 2.1
 git:
     submodules: false
 before_script:
-    - sed -i "s#ssh://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+    - sed -i "s#git+ssh://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
     - git submodule init
     - git submodule update
 script: rake
