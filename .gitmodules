@@ -19,3 +19,6 @@
 [submodule "gnushogi"]
 	path = gnushogi
 	url = ssh+git://aur@aur.archlinux.org/gnushogi.git
+[submodule "xshogi"]
+	path = xshogi
+	url = ssh+git://aur@aur.archlinux.org/xshogi.git
