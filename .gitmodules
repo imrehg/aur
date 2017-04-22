@@ -22,3 +22,6 @@
 [submodule "xshogi"]
 	path = xshogi
 	url = ssh+git://aur@aur.archlinux.org/xshogi.git
+[submodule "juce"]
+	path = juce
+	url = ssh+git://aur@aur.archlinux.org/juce.git
