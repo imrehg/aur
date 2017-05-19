@@ -25,3 +25,6 @@
 [submodule "juce"]
 	path = juce
 	url = ssh+git://aur@aur.archlinux.org/juce.git
+[submodule "versionist"]
+	path = versionist
+	url = ssh+git://aur@aur.archlinux.org/versionist.git
