@@ -28,3 +28,6 @@
 [submodule "versionist"]
 	path = versionist
 	url = ssh+git://aur@aur.archlinux.org/versionist.git
+[submodule "syncit"]
+	path = syncit
+	url = ssh+git://aur@aur.archlinux.org/syncit.git
