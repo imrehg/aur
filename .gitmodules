@@ -31,3 +31,6 @@
 [submodule "syncit"]
 	path = syncit
 	url = ssh+git://aur@aur.archlinux.org/syncit.git
+[submodule "json-table"]
+	path = json-table
+	url = ssh+git://aur@aur.archlinux.org/json-table.git
