@@ -34,3 +34,6 @@
 [submodule "json-table"]
 	path = json-table
 	url = ssh+git://aur@aur.archlinux.org/json-table.git
+[submodule "balena"]
+	path = balena
+	url = ssh+git://aur@aur.archlinux.org/balena.git
