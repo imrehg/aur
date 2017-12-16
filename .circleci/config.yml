@@ -1,0 +1,274 @@
+version: 2
+jobs:
+  test_balena:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building balena
+          command: |
+            cd ~/aur/balena
+            makepkg -sci --noconfirm
+  test_bluemix-cli:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building bluemix-cli
+          command: |
+            cd ~/aur/bluemix-cli
+            makepkg -sci --noconfirm
+  test_casefile:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building casefile
+          command: |
+            cd ~/aur/casefile
+            makepkg -sci --noconfirm
+  test_gnushogi:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building gnushogi
+          command: |
+            cd gnushogi
+            makepkg -sci --noconfirm
+  test_json-table:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building json-table
+          command: |
+            cd ~/aur/json-table
+            makepkg -sci --noconfirm
+  test_juce:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building juce
+          command: |
+            cd ~/aur/juce
+            makepkg -sci --noconfirm
+  test_particle-cli:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building particle-cli
+          command: |
+            cd particle-cli
+            makepkg -sci --noconfirm
+  test_resin-cli:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building resin-cli
+          command: |
+            cd resin-cli
+            makepkg -sci --noconfirm
+  test_resin-cli-git:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building resin-cli-git
+          command: |
+            cd resin-cli-git
+            makepkg -sci --noconfirm
+  test_syncit:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building syncit
+          command: |
+            cd ~/aur/syncit
+            makepkg -sci --noconfirm
+  test_vectr:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building vectr
+          command: |
+            cd ~/aur/vectr
+            makepkg -sci --noconfirm
+  test_versionist:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building versionist
+          command: |
+            cd ~/aur/versionist
+            makepkg -sci --noconfirm
+  test_xshogi:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Building gnushogi
+          command: |
+            cd ~/aur/gnushogi
+            makepkg -sci --noconfirm
+      - run:
+          name: Building xshogi
+          command: |
+            cd ~/aur/xshogi
+            makepkg -sci --noconfirm
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test_balena
+      - test_bluemix-cli
+      - test_casefile
+      - test_gnushogi
+      - test_json-table
+      - test_juce
+      - test_particle-cli
+      - test_resin-cli
+      - test_resin-cli-git
+      - test_syncit
+      - test_vectr
+      - test_versionist
+      - test_xshogi:
+          requires:
+            - test_gnushogi
