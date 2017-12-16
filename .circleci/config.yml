@@ -308,6 +308,11 @@ jobs:
             cd ~/aur/xshogi
             namcap PKGBUILD
       - run:
+          name: Installing gnushogi
+          command: |
+            cd ~/aur/gnushogi
+            makepkg -sci --noconfirm
+      - run:
           name: Building xshogi
           command: |
             cd ~/aur/xshogi
