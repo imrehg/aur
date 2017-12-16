@@ -15,6 +15,11 @@ jobs:
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
       - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/balena
+            namcap PKGBUILD
+      - run:
           name: Building balena
           command: |
             cd ~/aur/balena
@@ -33,6 +38,11 @@ jobs:
           command: |
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
+      - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/bluemix-cli
+            namcap PKGBUILD
       - run:
           name: Building bluemix-cli
           command: |
@@ -53,6 +63,11 @@ jobs:
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
       - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/casefile
+            namcap PKGBUILD
+      - run:
           name: Building casefile
           command: |
             cd ~/aur/casefile
@@ -71,6 +86,11 @@ jobs:
           command: |
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
+      - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/gnushogi
+            namcap PKGBUILD
       - run:
           name: Building gnushogi
           command: |
@@ -91,6 +111,11 @@ jobs:
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
       - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/json-table
+            namcap PKGBUILD
+      - run:
           name: Building json-table
           command: |
             cd ~/aur/json-table
@@ -109,6 +134,11 @@ jobs:
           command: |
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
+      - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/juce
+            namcap PKGBUILD
       - run:
           name: Building juce
           command: |
@@ -129,6 +159,11 @@ jobs:
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
       - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/particle-cli
+            namcap PKGBUILD
+      - run:
           name: Building particle-cli
           command: |
             cd particle-cli
@@ -147,6 +182,11 @@ jobs:
           command: |
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
+      - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/resin-cli
+            namcap PKGBUILD
       - run:
           name: Building resin-cli
           command: |
@@ -167,6 +207,11 @@ jobs:
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
       - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/resin-cli-git
+            namcap PKGBUILD
+      - run:
           name: Building resin-cli-git
           command: |
             cd resin-cli-git
@@ -185,6 +230,11 @@ jobs:
           command: |
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
+      - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/syncit
+            namcap PKGBUILD
       - run:
           name: Building syncit
           command: |
@@ -205,6 +255,11 @@ jobs:
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
       - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/vectr
+            namcap PKGBUILD
+      - run:
           name: Building vectr
           command: |
             cd ~/aur/vectr
@@ -223,6 +278,11 @@ jobs:
           command: |
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
+      - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/versionist
+            namcap PKGBUILD
       - run:
           name: Building versionist
           command: |
@@ -243,10 +303,10 @@ jobs:
             sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
             git submodule update --init
       - run:
-          name: Building gnushogi
+          name: Testing PKGBUILD
           command: |
-            cd ~/aur/gnushogi
-            makepkg -sci --noconfirm
+            cd ~/aur/xshogi
+            namcap PKGBUILD
       - run:
           name: Building xshogi
           command: |
