@@ -24,6 +24,8 @@ jobs:
           command: |
             cd ~/aur/balena
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_bluemix-cli:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -48,6 +50,8 @@ jobs:
           command: |
             cd ~/aur/bluemix-cli
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_casefile:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -72,6 +76,8 @@ jobs:
           command: |
             cd ~/aur/casefile
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_eszig:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -96,6 +102,8 @@ jobs:
           command: |
             cd ~/aur/eszig
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_gnushogi:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -120,6 +128,8 @@ jobs:
           command: |
             cd gnushogi
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_json-table:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -144,6 +154,8 @@ jobs:
           command: |
             cd ~/aur/json-table
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_juce:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -168,6 +180,8 @@ jobs:
           command: |
             cd ~/aur/juce
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_particle-cli:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -192,6 +206,8 @@ jobs:
           command: |
             cd particle-cli
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_resin-cli:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -216,6 +232,8 @@ jobs:
           command: |
             cd resin-cli
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_resin-cli-git:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -240,6 +258,8 @@ jobs:
           command: |
             cd resin-cli-git
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_syncit:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -264,6 +284,8 @@ jobs:
           command: |
             cd ~/aur/syncit
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_vectr:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -288,6 +310,8 @@ jobs:
           command: |
             cd ~/aur/vectr
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_versionist:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -312,6 +336,8 @@ jobs:
           command: |
             cd ~/aur/versionist
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
   test_xshogi:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -333,14 +359,14 @@ jobs:
             namcap PKGBUILD
       - run:
           name: Installing gnushogi
-          command: |
-            cd ~/aur/gnushogi
-            makepkg -sci --noconfirm
+          command: pacman -U --noconfirm $CIRCLE_ARTIFACTS/gnushogi*.pkg.*
       - run:
           name: Building xshogi
           command: |
             cd ~/aur/xshogi
             makepkg -sci --noconfirm
+    post:
+      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
 
 workflows:
   version: 2
