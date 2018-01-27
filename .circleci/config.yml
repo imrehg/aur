@@ -72,6 +72,30 @@ jobs:
           command: |
             cd ~/aur/casefile
             makepkg -sci --noconfirm
+  test_eszig:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    working_directory: ~/aur
+    steps:
+      - run:
+          name: Update packages
+          command: sudo pacman -Syu --noconfirm
+      - checkout
+      - run:
+          name: "Git repo updates"
+          command: |
+            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+            git submodule update --init
+      - run:
+          name: Testing PKGBUILD
+          command: |
+            cd ~/aur/eszig
+            namcap PKGBUILD
+      - run:
+          name: Building eszig
+          command: |
+            cd ~/aur/eszig
+            makepkg -sci --noconfirm
   test_gnushogi:
     docker:
       - image: imrehg/archlinux-makepkg
@@ -325,6 +349,7 @@ workflows:
       - test_balena
       - test_bluemix-cli
       - test_casefile
+      - test_eszig
       - test_gnushogi
       - test_json-table
       - test_juce

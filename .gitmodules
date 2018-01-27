@@ -37,3 +37,6 @@
 [submodule "balena"]
 	path = balena
 	url = ssh+git://aur@aur.archlinux.org/balena.git
+[submodule "eszig"]
+	path = eszig
+	url = ssh+git://aur@aur.archlinux.org/eszig.git
