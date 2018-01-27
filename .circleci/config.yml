@@ -1,390 +1,230 @@
+# Common sections
+defaults: &defaults
+  working_directory: ~/aur
+  docker:
+    - image: imrehg/archlinux-makepkg
+
+updatepackage: &updatepackage
+  name: Update packages
+  command: sudo pacman -Syu --noconfirm
+
+gitupdate: &gitupdate
+  name: Git repo updates
+  command: |
+    sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
+    git submodule update --init
+
+pkgbuildtest: &pkgbuildtest
+  name: Testing PKGBUILD
+  command: |
+    cd ~/aur/${CIRCLE_JOB}
+    namcap PKGBUILD
+
+buildtest: &buildtest
+  name: Building package
+  command: |
+    cd ~/aur/${CIRCLE_JOB}
+    makepkg -sci --noconfirm
+
+# Main
 version: 2
 jobs:
-  test_balena:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+  balena:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/balena
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building balena
-          command: |
-            cd ~/aur/balena
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_bluemix-cli:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  bluemix-cli:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/bluemix-cli
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building bluemix-cli
-          command: |
-            cd ~/aur/bluemix-cli
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_casefile:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  casefile:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/casefile
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building casefile
-          command: |
-            cd ~/aur/casefile
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_eszig:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  eszig:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/eszig
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building eszig
-          command: |
-            cd ~/aur/eszig
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_gnushogi:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  gnushogi:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/gnushogi
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building gnushogi
-          command: |
-            cd gnushogi
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_json-table:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+      - persist_to_workspace:
+          root: gnushogi
+          paths: gnushogi-*.pkg.tar.xz
+  json-table:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/json-table
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building json-table
-          command: |
-            cd ~/aur/json-table
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_juce:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  juce:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/juce
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building juce
-          command: |
-            cd ~/aur/juce
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_particle-cli:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  particle-cli:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/particle-cli
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building particle-cli
-          command: |
-            cd particle-cli
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_resin-cli:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  resin-cli:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/resin-cli
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building resin-cli
-          command: |
-            cd resin-cli
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_resin-cli-git:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  resin-cli-git:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/resin-cli-git
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building resin-cli-git
-          command: |
-            cd resin-cli-git
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_syncit:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  syncit:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/syncit
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building syncit
-          command: |
-            cd ~/aur/syncit
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_vectr:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  vectr:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/vectr
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building vectr
-          command: |
-            cd ~/aur/vectr
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_versionist:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  versionist:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/versionist
-            namcap PKGBUILD
+          <<: *pkgbuildtest
       - run:
-          name: Building versionist
-          command: |
-            cd ~/aur/versionist
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
-  test_xshogi:
-    docker:
-      - image: imrehg/archlinux-makepkg
-    working_directory: ~/aur
+          <<: *buildtest
+  xshogi:
+    <<: *defaults
+    steps:
+    <<: *defaults
     steps:
       - run:
-          name: Update packages
-          command: sudo pacman -Syu --noconfirm
+          <<: *updatepackage
       - checkout
       - run:
-          name: "Git repo updates"
-          command: |
-            sed -i "s#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#" .gitmodules
-            git submodule update --init
+          <<: *gitupdate
       - run:
-          name: Testing PKGBUILD
-          command: |
-            cd ~/aur/xshogi
-            namcap PKGBUILD
+          <<: *pkgbuildtest
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: Installing gnushogi
-          command: pacman -U --noconfirm $CIRCLE_ARTIFACTS/gnushogi*.pkg.*
+          command: sudo pacman -U --noconfirm /tmp/workspace/gnushogi*.pkg.*
       - run:
-          name: Building xshogi
-          command: |
-            cd ~/aur/xshogi
-            makepkg -sci --noconfirm
-    post:
-      - mv *.pkg.tar.xz $CIRCLE_ARTIFACTS/
+          <<: *buildtest
 
 workflows:
   version: 2
   build:
     jobs:
-      - test_balena
-      - test_bluemix-cli
-      - test_casefile
-      - test_eszig
-      - test_gnushogi
-      - test_json-table
-      - test_juce
-      - test_particle-cli
-      - test_resin-cli
-      - test_resin-cli-git
-      - test_syncit
-      - test_vectr
-      - test_versionist
-      - test_xshogi:
+      - balena
+      - bluemix-cli
+      - casefile
+      - eszig
+      - gnushogi
+      - json-table
+      - juce
+      - particle-cli
+      - resin-cli
+      - resin-cli-git
+      - syncit
+      - vectr
+      - versionist
+      - xshogi:
           requires:
-            - test_gnushogi
+            - gnushogi
