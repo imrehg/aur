@@ -40,3 +40,6 @@
 [submodule "eszig"]
 	path = eszig
 	url = ssh+git://aur@aur.archlinux.org/eszig.git
+[submodule "ipget"]
+	path = ipget
+	url = ssh+git://aur@aur.archlinux.org/ipget.git
