@@ -176,18 +176,6 @@ jobs:
           <<: *pkgbuildtest
       - run:
           <<: *buildtest
-  vectr:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
   versionist:
     <<: *defaults
     steps:
@@ -234,7 +222,6 @@ workflows:
       - resin-cli
       - resin-cli-git
       - syncit
-      - vectr
       - versionist
       - xshogi:
           requires:

@@ -7,9 +7,6 @@
 [submodule "particle-cli"]
 	path = particle-cli
 	url = ssh+git://aur@aur.archlinux.org/particle-cli.git
-[submodule "vectr"]
-	path = vectr
-	url = ssh+git://aur@aur.archlinux.org/vectr.git
 [submodule "bluemix-cli"]
 	path = bluemix-cli
 	url = ssh+git://aur@aur.archlinux.org/bluemix-cli.git
