@@ -41,18 +41,6 @@ jobs:
           <<: *pkgbuildtest
       - run:
           <<: *buildtest
-  bluemix-cli:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
   casefile:
     <<: *defaults
     steps:
@@ -211,7 +199,6 @@ workflows:
   build:
     jobs:
       - balena
-      - bluemix-cli
       - casefile
       - eszig
       - gnushogi
