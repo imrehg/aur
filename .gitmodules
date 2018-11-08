@@ -40,3 +40,9 @@
 [submodule "ipget"]
 	path = ipget
 	url = ssh+git://aur@aur.archlinux.org/ipget.git
+[submodule "balena-cli"]
+	path = balena-cli
+	url = ssh+git://aur@aur.archlinux.org/balena-cli.git
+[submodule "balena-cli-git"]
+	path = balena-cli-git
+	url = ssh+git://aur@aur.archlinux.org/balena-cli-git.git

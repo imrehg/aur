@@ -41,6 +41,30 @@ jobs:
           <<: *pkgbuildtest
       - run:
           <<: *buildtest
+  balena-cli:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *updatepackage
+      - checkout
+      - run:
+          <<: *gitupdate
+      - run:
+          <<: *pkgbuildtest
+      - run:
+          <<: *buildtest
+  balena-cli-git:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *updatepackage
+      - checkout
+      - run:
+          <<: *gitupdate
+      - run:
+          <<: *pkgbuildtest
+      - run:
+          <<: *buildtest
   casefile:
     <<: *defaults
     steps:
@@ -128,30 +152,6 @@ jobs:
           <<: *pkgbuildtest
       - run:
           <<: *buildtest
-  resin-cli:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  resin-cli-git:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
   syncit:
     <<: *defaults
     steps:
@@ -199,6 +199,8 @@ workflows:
   build:
     jobs:
       - balena
+      - balena-cli
+      - balena-cli-git
       - casefile
       - eszig
       - gnushogi
@@ -206,8 +208,6 @@ workflows:
       - json-table
       - juce
       - particle-cli
-      - resin-cli
-      - resin-cli-git
       - syncit
       - versionist
       - xshogi:
