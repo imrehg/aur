@@ -1,9 +1,3 @@
-[submodule "resin-cli"]
-	path = resin-cli
-	url = ssh+git://aur@aur.archlinux.org/resin-cli.git
-[submodule "resin-cli-git"]
-	path = resin-cli-git
-	url = ssh+git://aur@aur.archlinux.org/resin-cli-git.git
 [submodule "particle-cli"]
 	path = particle-cli
 	url = ssh+git://aur@aur.archlinux.org/particle-cli.git
