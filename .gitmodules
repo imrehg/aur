@@ -31,9 +31,6 @@
 [submodule "eszig"]
 	path = eszig
 	url = ssh+git://aur@aur.archlinux.org/eszig.git
-[submodule "ipget"]
-	path = ipget
-	url = ssh+git://aur@aur.archlinux.org/ipget.git
 [submodule "balena-cli"]
 	path = balena-cli
 	url = ssh+git://aur@aur.archlinux.org/balena-cli.git

@@ -104,18 +104,6 @@ jobs:
       - persist_to_workspace:
           root: gnushogi
           paths: gnushogi-*.pkg.tar.xz
-  ipget:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
   json-table:
     <<: *defaults
     steps:
@@ -204,7 +192,6 @@ workflows:
       - casefile
       - eszig
       - gnushogi
-      - ipget
       - json-table
       - juce
       - particle-cli
