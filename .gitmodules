@@ -37,3 +37,6 @@
 [submodule "balena-cli-git"]
 	path = balena-cli-git
 	url = ssh+git://aur@aur.archlinux.org/balena-cli-git.git
+[submodule "go-filecoin-git"]
+	path = go-filecoin-git
+	url = ssh+git://aur@aur.archlinux.org/go-filecoin-git.git
