@@ -77,6 +77,18 @@ jobs:
           <<: *pkgbuildtest
       - run:
           <<: *buildtest
+  edgetpu_api:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *updatepackage
+      - checkout
+      - run:
+          <<: *gitupdate
+      - run:
+          <<: *pkgbuildtest
+      - run:
+          <<: *buildtest
   eszig:
     <<: *defaults
     steps:
@@ -202,6 +214,7 @@ workflows:
       - balena-cli
       - balena-cli-git
       - casefile
+      - edgetpu_api
       - eszig
       - gnushogi
       - go-filecoin-git
