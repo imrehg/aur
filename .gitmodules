@@ -25,9 +25,6 @@
 [submodule "json-table"]
 	path = json-table
 	url = ssh+git://aur@aur.archlinux.org/json-table.git
-[submodule "balena"]
-	path = balena
-	url = ssh+git://aur@aur.archlinux.org/balena.git
 [submodule "eszig"]
 	path = eszig
 	url = ssh+git://aur@aur.archlinux.org/eszig.git
@@ -46,3 +43,6 @@
 [submodule "go-filecoin"]
 	path = go-filecoin
 	url = ssh+git://aur@aur.archlinux.org/go-filecoin.git
+[submodule "balena-engine"]
+	path = balena-engine
+	url = ssh+git://aur@aur.archlinux.org/balena-engine.git
