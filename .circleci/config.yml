@@ -43,8 +43,8 @@ joblist: &joblist
     - syncit
     - versionist
     - xshogi:
-      requires:
-        - gnushogi
+        requires:
+          - gnushogi
 
 # Main
 version: 2
