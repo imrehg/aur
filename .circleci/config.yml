@@ -26,6 +26,26 @@ buildtest: &buildtest
     cd ~/aur/${CIRCLE_JOB}
     makepkg -sci --noconfirm
 
+joblist: &joblist
+  jobs:
+    - balena-cli
+    - balena-cli-git
+    - balena-engine
+    - casefile
+    - edgetpu_api
+    - eszig
+    - gnushogi
+    - go-filecoin
+    - go-filecoin-git
+    - json-table
+    - juce
+    - particle-cli
+    - syncit
+    - versionist
+    - xshogi:
+      requires:
+        - gnushogi
+
 # Main
 version: 2
 jobs:
@@ -220,22 +240,14 @@ jobs:
 
 workflows:
   version: 2
-  build:
-    jobs:
-      - balena-cli
-      - balena-cli-git
-      - balena-engine
-      - casefile
-      - edgetpu_api
-      - eszig
-      - gnushogi
-      - go-filecoin
-      - go-filecoin-git
-      - json-table
-      - juce
-      - particle-cli
-      - syncit
-      - versionist
-      - xshogi:
-          requires:
-            - gnushogi
+  commit:
+    <<: *joblist
+  nightly:
+    triggers:
+      - schedule:
+          cron: "4 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    <<: *joblist
