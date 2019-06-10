@@ -242,7 +242,7 @@ workflows:
   version: 2
   commit:
     <<: *joblist
-  nightly:
+  weekly:
     triggers:
       - schedule:
           cron: "0 4 * * 6"
