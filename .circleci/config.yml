@@ -108,7 +108,11 @@ jobs:
       - run:
           <<: *pkgbuildtest
       - run:
-          <<: *buildtest
+          name: Building package
+          command: |
+            cd ~/aur/${CIRCLE_JOB}
+            yaourt -S --noconfirm libc++
+            makepkg -sci --noconfirm
   eszig:
     <<: *defaults
     steps:
