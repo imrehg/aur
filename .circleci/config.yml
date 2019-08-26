@@ -29,7 +29,6 @@ buildtest: &buildtest
 joblist: &joblist
   jobs:
     - balena-cli
-    - balena-cli-git
     - balena-engine
     - casefile
     - edgetpu_api
@@ -50,18 +49,6 @@ joblist: &joblist
 version: 2
 jobs:
   balena-cli:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  balena-cli-git:
     <<: *defaults
     steps:
       - run:
