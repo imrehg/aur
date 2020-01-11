@@ -31,7 +31,6 @@ joblist: &joblist
     - balena-cli
     - balena-engine
     - casefile
-    - edgetpu_api
     - eszig
     - gnushogi
     - go-filecoin
@@ -84,22 +83,6 @@ jobs:
           <<: *pkgbuildtest
       - run:
           <<: *buildtest
-  edgetpu_api:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          name: Building package
-          command: |
-            cd ~/aur/${CIRCLE_JOB}
-            yay -S --noconfirm libc++
-            makepkg -sci --noconfirm
   eszig:
     <<: *defaults
     steps:

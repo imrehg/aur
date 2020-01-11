@@ -34,9 +34,6 @@
 [submodule "go-filecoin-git"]
 	path = go-filecoin-git
 	url = ssh+git://aur@aur.archlinux.org/go-filecoin-git.git
-[submodule "edgetpu_api"]
-	path = edgetpu_api
-	url = ssh+git://aur@aur.archlinux.org/edgetpu_api.git
 [submodule "go-filecoin"]
 	path = go-filecoin
 	url = ssh+git://aur@aur.archlinux.org/go-filecoin.git
