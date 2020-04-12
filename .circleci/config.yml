@@ -33,8 +33,6 @@ joblist: &joblist
     - casefile
     - eszig
     - gnushogi
-    - go-filecoin
-    - go-filecoin-git
     - json-table
     - juce
     - particle-cli
@@ -110,30 +108,6 @@ jobs:
       - persist_to_workspace:
           root: gnushogi
           paths: gnushogi-*.pkg.tar.xz
-  go-filecoin:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  go-filecoin-git:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
   json-table:
     <<: *defaults
     steps:
