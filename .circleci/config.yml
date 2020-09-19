@@ -107,7 +107,7 @@ jobs:
           <<: *buildtest
       - persist_to_workspace:
           root: gnushogi
-          paths: gnushogi-*.pkg.tar.xz
+          paths: gnushogi-*.pkg.*
   json-table:
     <<: *defaults
     steps:
