@@ -28,15 +28,8 @@ buildtest: &buildtest
 
 joblist: &joblist
   jobs:
-    - balena-cli
-    - balena-engine
     - eszig
     - gnushogi
-    - json-table
-    - juce
-    - particle-cli
-    - syncit
-    - versionist
     - xshogi:
         requires:
           - gnushogi
@@ -44,30 +37,6 @@ joblist: &joblist
 # Main
 version: 2
 jobs:
-  balena-cli:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  balena-engine:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
   eszig:
     <<: *defaults
     steps:
@@ -95,66 +64,6 @@ jobs:
       - persist_to_workspace:
           root: gnushogi
           paths: gnushogi-*.pkg.*
-  json-table:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  juce:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  particle-cli:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  syncit:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  versionist:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
   xshogi:
     <<: *defaults
     steps:
