@@ -1,6 +1,3 @@
-[submodule "particle-cli"]
-	path = particle-cli
-	url = ssh+git://aur@aur.archlinux.org/particle-cli.git
 [submodule "bluemix-cli"]
 	path = bluemix-cli
 	url = ssh+git://aur@aur.archlinux.org/bluemix-cli.git
@@ -10,24 +7,6 @@
 [submodule "xshogi"]
 	path = xshogi
 	url = ssh+git://aur@aur.archlinux.org/xshogi.git
-[submodule "juce"]
-	path = juce
-	url = ssh+git://aur@aur.archlinux.org/juce.git
-[submodule "versionist"]
-	path = versionist
-	url = ssh+git://aur@aur.archlinux.org/versionist.git
-[submodule "syncit"]
-	path = syncit
-	url = ssh+git://aur@aur.archlinux.org/syncit.git
-[submodule "json-table"]
-	path = json-table
-	url = ssh+git://aur@aur.archlinux.org/json-table.git
 [submodule "eszig"]
 	path = eszig
 	url = ssh+git://aur@aur.archlinux.org/eszig.git
-[submodule "balena-cli"]
-	path = balena-cli
-	url = ssh+git://aur@aur.archlinux.org/balena-cli.git
-[submodule "balena-engine"]
-	path = balena-engine
-	url = ssh+git://aur@aur.archlinux.org/balena-engine.git
