@@ -4,9 +4,6 @@
 [submodule "bluemix-cli"]
 	path = bluemix-cli
 	url = ssh+git://aur@aur.archlinux.org/bluemix-cli.git
-[submodule "casefile"]
-	path = casefile
-	url = ssh+git://aur@aur.archlinux.org/casefile.git
 [submodule "gnushogi"]
 	path = gnushogi
 	url = ssh+git://aur@aur.archlinux.org/gnushogi.git

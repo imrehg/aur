@@ -30,7 +30,6 @@ joblist: &joblist
   jobs:
     - balena-cli
     - balena-engine
-    - casefile
     - eszig
     - gnushogi
     - json-table
@@ -58,18 +57,6 @@ jobs:
       - run:
           <<: *buildtest
   balena-engine:
-    <<: *defaults
-    steps:
-      - run:
-          <<: *updatepackage
-      - checkout
-      - run:
-          <<: *gitupdate
-      - run:
-          <<: *pkgbuildtest
-      - run:
-          <<: *buildtest
-  casefile:
     <<: *defaults
     steps:
       - run:
