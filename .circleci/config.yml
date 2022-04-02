@@ -30,6 +30,7 @@ joblist: &joblist
   jobs:
     - eszig
     - gnushogi
+    - particle-cli
     - xshogi:
         requires:
           - gnushogi
@@ -64,6 +65,18 @@ jobs:
       - persist_to_workspace:
           root: gnushogi
           paths: gnushogi-*.pkg.*
+  particle-cli:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *updatepackage
+      - checkout
+      - run:
+          <<: *gitupdate
+      - run:
+          <<: *pkgbuildtest
+      - run:
+          <<: *buildtest
   xshogi:
     <<: *defaults
     steps:
