@@ -10,3 +10,6 @@
 [submodule "particle-cli"]
 	path = particle-cli
 	url = ssh+git://aur@aur.archlinux.org/particle-cli.git
+[submodule "abctl"]
+	path = abctl
+	url = ssh+git://aur@aur.archlinux.org/abctl.git
