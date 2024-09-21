@@ -4,9 +4,6 @@
 [submodule "xshogi"]
 	path = xshogi
 	url = ssh+git://aur@aur.archlinux.org/xshogi.git
-[submodule "eszig"]
-	path = eszig
-	url = ssh+git://aur@aur.archlinux.org/eszig.git
 [submodule "particle-cli"]
 	path = particle-cli
 	url = ssh+git://aur@aur.archlinux.org/particle-cli.git
