@@ -28,7 +28,7 @@ buildtest: &buildtest
 
 joblist: &joblist
   jobs:
-    - eszig
+    - abctl
     - gnushogi
     - particle-cli
     - xshogi:
@@ -38,7 +38,7 @@ joblist: &joblist
 # Main
 version: 2
 jobs:
-  eszig:
+  abctl:
     <<: *defaults
     steps:
       - run:
