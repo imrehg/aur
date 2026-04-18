@@ -6,7 +6,9 @@ defaults: &defaults
 
 updatepackage: &updatepackage
   name: Update packages
-  command: sudo pacman -Syu --noconfirm
+  command: |
+    sudo pacman -Sy --noconfirm archlinux-keyring
+    sudo pacman -Su --noconfirm
 
 gitupdate: &gitupdate
   name: Git repo updates
