@@ -31,6 +31,7 @@ joblist: &joblist
     - abctl
     - gnushogi
     - particle-cli
+    - wget-lua
     - xshogi:
         requires:
           - gnushogi
@@ -66,6 +67,18 @@ jobs:
           root: gnushogi
           paths: gnushogi-*.pkg.*
   particle-cli:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *updatepackage
+      - checkout
+      - run:
+          <<: *gitupdate
+      - run:
+          <<: *pkgbuildtest
+      - run:
+          <<: *buildtest
+  wget-lua:
     <<: *defaults
     steps:
       - run:

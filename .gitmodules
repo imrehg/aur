@@ -10,3 +10,6 @@
 [submodule "abctl"]
 	path = abctl
 	url = ssh+git://aur@aur.archlinux.org/abctl.git
+[submodule "wget-lua"]
+	path = wget-lua
+	url = ssh+git://aur@aur.archlinux.org/wget-lua.git
