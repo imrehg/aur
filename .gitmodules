@@ -13,3 +13,6 @@
 [submodule "wget-lua"]
 	path = wget-lua
 	url = ssh+git://aur@aur.archlinux.org/wget-lua.git
+[submodule "xfce4-artwork"]
+	path = xfce4-artwork
+	url = ssh+git://aur@aur.archlinux.org/xfce4-artwork.git

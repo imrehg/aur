@@ -32,6 +32,7 @@ joblist: &joblist
     - gnushogi
     - particle-cli
     - wget-lua
+    - xfce4-artwork
     - xshogi:
         requires:
           - gnushogi
@@ -67,6 +68,18 @@ jobs:
           root: gnushogi
           paths: gnushogi-*.pkg.*
   particle-cli:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *updatepackage
+      - checkout
+      - run:
+          <<: *gitupdate
+      - run:
+          <<: *pkgbuildtest
+      - run:
+          <<: *buildtest
+  xfce4-artwork:
     <<: *defaults
     steps:
       - run:
