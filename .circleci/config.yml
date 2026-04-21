@@ -68,7 +68,7 @@ jobs:
       - persist_to_workspace:
           root: gnushogi
           paths: gnushogi-*.pkg.*
-  networkmanager-iodine-git
+  networkmanager-iodine-git:
     <<: *defaults
     steps:
       - run:
