@@ -16,3 +16,6 @@
 [submodule "xfce4-artwork"]
 	path = xfce4-artwork
 	url = ssh+git://aur@aur.archlinux.org/xfce4-artwork.git
+[submodule "networkmanager-iodine-git"]
+	path = networkmanager-iodine-git
+	url = ssh+git://aur@aur.archlinux.org/networkmanager-iodine-git.git

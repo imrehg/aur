@@ -30,6 +30,7 @@ joblist: &joblist
   jobs:
     - abctl
     - gnushogi
+    - networkmanager-iodine-git
     - particle-cli
     - wget-lua
     - xfce4-artwork
@@ -67,6 +68,18 @@ jobs:
       - persist_to_workspace:
           root: gnushogi
           paths: gnushogi-*.pkg.*
+  networkmanager-iodine-git
+    <<: *defaults
+    steps:
+      - run:
+          <<: *updatepackage
+      - checkout
+      - run:
+          <<: *gitupdate
+      - run:
+          <<: *pkgbuildtest
+      - run:
+          <<: *buildtest
   particle-cli:
     <<: *defaults
     steps:
