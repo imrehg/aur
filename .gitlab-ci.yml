@@ -16,4 +16,16 @@ version-check:
     - git submodule sync
     - git submodule update --init --remote
   script:
-    - pkgctl version check --verbose $(dirname */.nvchecker.toml)
+    # The pretty output's spinner breaks without a terminal, and the JSON mode
+    # always exits 0, so evaluate the JSON result here
+    - pkgctl version check --json --verbose $(dirname */.nvchecker.toml) > versions.json
+    - |
+      jq -r '.[] | "\(.pkgbase): local \(.local_version), upstream \(.upstream_version // "?") [\(
+        if .status != "success" then "CHECK FAILED: \(.message)"
+        elif .out_of_date then "OUT OF DATE"
+        else "ok" end)]"' versions.json
+    - jq -e 'all(.status == "success" and (.out_of_date | not))' versions.json > /dev/null
+  artifacts:
+    when: always
+    paths:
+      - versions.json
