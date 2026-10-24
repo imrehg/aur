@@ -19,3 +19,6 @@
 [submodule "networkmanager-iodine-git"]
 	path = networkmanager-iodine-git
 	url = ssh+git://aur@aur.archlinux.org/networkmanager-iodine-git.git
+[submodule "nhiicc"]
+	path = nhiicc
+	url = ssh+git://aur@aur.archlinux.org/nhiicc.git
