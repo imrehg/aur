@@ -1,3 +1,5 @@
+version: "2.1"
+
 # Common sections
 defaults: &defaults
   working_directory: ~/aur
@@ -39,7 +41,6 @@ joblist: &joblist
           - gnushogi
 
 # Main
-version: 2
 jobs:
   abctl:
     <<: *defaults
