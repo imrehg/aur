@@ -26,6 +26,10 @@ buildtest: &buildtest
   name: Building package
   command: |
     cd ~/aur/${CIRCLE_JOB}
+    # makepkg doesn't import the source signing keys shipped with a package
+    if [ -d keys/pgp ]; then
+      gpg --import keys/pgp/*.asc
+    fi
     makepkg -sci --noconfirm
 
 joblist: &joblist
