@@ -1,0 +1,19 @@
+# Weekly check of all packages with an .nvchecker.toml against their upstream
+# versions. The job fails when anything is out of date, so GitLab's failed
+# pipeline email works as the notification.
+
+version-check:
+  image: archlinux:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+  variables:
+    GIT_SUBMODULE_STRATEGY: none
+  before_script:
+    - pacman -Syu --noconfirm --needed devtools nvchecker git
+    # Fetch the latest AUR state over https rather than the pinned submodule commits
+    - sed -i 's#ssh+git://aur@aur.archlinux.org#https://aur.archlinux.org#' .gitmodules
+    - git submodule sync
+    - git submodule update --init --remote
+  script:
+    - pkgctl version check --verbose $(dirname */.nvchecker.toml)
