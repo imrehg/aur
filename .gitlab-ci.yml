@@ -17,7 +17,7 @@ version-check:
     - git submodule sync
     - git submodule update --init --remote
   script:
-    # The pretty output's spinner breaks without a terminal, and the JSON mode
+    # The pretty output's spinner breaks when TERM is unset, and the JSON mode
     # always exits 0, so evaluate the JSON result here
     - pkgctl version check --json --verbose $(dirname */.nvchecker.toml) > versions.json
     - |
