@@ -88,6 +88,9 @@ jobs:
           <<: *buildtest
   nhiicc:
     <<: *defaults
+    # No build: the NHI download server resets connections from outside
+    # Taiwan (checked from CircleCI and a Dutch server), so only check the
+    # PKGBUILD here and build locally
     steps:
       - run:
           <<: *updatepackage
@@ -97,7 +100,10 @@ jobs:
       - run:
           <<: *pkgbuildtest
       - run:
-          <<: *buildtest
+          name: Checking .SRCINFO is up to date
+          command: |
+            cd ~/aur/${CIRCLE_JOB}
+            makepkg --printsrcinfo | diff -u .SRCINFO -
   particle-cli:
     <<: *defaults
     steps:
