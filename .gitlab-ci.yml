@@ -20,12 +20,20 @@ version-check:
     # The pretty output's spinner breaks when TERM is unset, and the JSON mode
     # always exits 0, so evaluate the JSON result here
     - pkgctl version check --json --verbose $(dirname */.nvchecker.toml) > versions.json
+    # -git packages (pkgver like 1.4.0.r2.gabc123) are always "newer" than the
+    # latest upstream tag, which pkgctl reports as a warning; treat that as ok
     - |
-      jq -r '.[] | "\(.pkgbase): local \(.local_version), upstream \(.upstream_version // "?") [\(
-        if .status != "success" then "CHECK FAILED: \(.message)"
+      cat > ok.jq <<'EOF'
+      def check_ok: .status == "success"
+        or (.status == "warning" and (.pkgbase | endswith("-git"))
+            and .message == "local version is newer than upstream");
+      EOF
+    - |
+      jq -r 'include "ok"; .[] | "\(.pkgbase): local \(.local_version), upstream \(.upstream_version // "?") [\(
+        if (check_ok | not) then "CHECK FAILED: \(.message)"
         elif .out_of_date then "OUT OF DATE"
-        else "ok" end)]"' versions.json
-    - jq -e 'all(.status == "success" and (.out_of_date | not))' versions.json > /dev/null
+        else "ok" end)]"' -L . versions.json
+    - jq -e -L . 'include "ok"; all(check_ok and (.out_of_date | not))' versions.json > /dev/null
   artifacts:
     when: always
     paths:
